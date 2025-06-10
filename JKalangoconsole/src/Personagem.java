@@ -4,11 +4,11 @@ public abstract class Personagem {
 public abstract void mover();
 public abstract void som();
 public abstract void atacar();
-public abstract void cansado();
 public abstract void comer();
 
 public Personagem (String nome){
     this.nome=nome;
+
 }
 public void dormir(){
     energia += 10;
@@ -17,5 +17,12 @@ public void dormir(){
 }
 public void energiaAtual (){
     System.out.println("A energia atual do " + nome + " é: " + energia);
+}
+public void cansado(){
+    if (energia <5){
+        System.out.println(nome + " Está muito cansado :(");
+    }else{
+        System.err.println(nome + " Não esta cansado! ");
+    }
 }
 }

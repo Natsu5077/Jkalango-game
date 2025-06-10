@@ -28,12 +28,7 @@ public class Kalango extends Personagem {
           }
           energiaAtual();
     }
-    @Override
-    public void cansado(){
-       if( energia <= 5){
-        System.out.println("Estou cansado :(");
-       }
-    }
+
     @Override
     public void comer(){
         energia+=4;
