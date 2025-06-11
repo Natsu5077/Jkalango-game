@@ -3,12 +3,15 @@ public abstract class Personagem {
     protected String nome;
 public abstract void mover();
 public abstract void som();
-public abstract void atacar();
 public abstract void comer();
 
 public Personagem (String nome){
     this.nome=nome;
 
+}
+public Personagem(){}
+public Personagem (int energia){
+    this.energia=energia;
 }
 public void dormir(){
     energia += 10;

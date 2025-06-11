@@ -1,4 +1,4 @@
-public class Formiga extends Personagem {
+public class Formiga extends Personagem implements IArmamento{
     
     public Formiga (String nome){
         super(nome);
@@ -19,19 +19,14 @@ public class Formiga extends Personagem {
         System.out.println("Fzzzz");
     }
     @Override
-    public void atacar (){
-        energia -=3;
-        System.out.println(nome + " faz o ataque  Super mordida ");
-        if (energia <0){
-            energia=0;
-            System.out.println(nome +" Sem energia ação não executada");
-          }
-          energiaAtual();
-    }
-    @Override
     public void comer(){
         energia+=1;
         System.out.println("Nham Nham ");
         energiaAtual();
     }
+    @Override
+    public void atacar() {
+       System.err.println(nome + " Ataca com quatro formas ");
+    }
+
 }

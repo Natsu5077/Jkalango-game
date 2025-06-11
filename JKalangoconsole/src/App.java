@@ -1,6 +1,6 @@
 public class App {
     public static void main(String[] args) throws Exception {
-       
+
         Formiga f = new Formiga ("Açucarado");
         f.mover();
         f.mover();
@@ -13,6 +13,7 @@ public class App {
         f.atacar();
         f.energiaAtual();
         f.cansado();
+
         Kalango k = new Kalango("Rangonildo");
         k.mover();
         k.mover();
@@ -27,6 +28,7 @@ public class App {
         k.mover();
         k.energiaAtual();
         k.cansado();
+
         Abelinha a = new Abelinha("Mel-azedo");
         a.mover();
         a.mover();

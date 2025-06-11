@@ -1,4 +1,4 @@
-public class Abelinha extends Personagem {
+public class Abelinha extends Personagem implements IArmamento{
     
   public Abelinha(String nome){
     super(nome);
@@ -19,19 +19,13 @@ public class Abelinha extends Personagem {
         System.out.println("BzzzBZZZ");
     }
     @Override
-    public void atacar (){
-        energia -=3;
-        System.out.println(nome + " faz o ataque Ferroada venenosa ");
-        if (energia <0){
-            energia=0;
-            System.out.println(nome +" Sem energia ação não executada");
-          }
-          energiaAtual();
-    }
-    @Override
     public void comer(){
         energia+=2;
         System.out.println("Nham Nham ");
         energiaAtual();
+    }
+    @Override
+    public void atacar() {
+      System.err.println(nome + " ataca de duas formas ");
     }
 }

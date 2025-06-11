@@ -1,4 +1,4 @@
-public class Kalango extends Personagem {
+public class Kalango extends Personagem implements IArmamento{
 
     public Kalango (String nome){
         super(nome);
@@ -19,21 +19,14 @@ public class Kalango extends Personagem {
         System.out.println("Tssss");
     }
     @Override
-    public void atacar (){
-        energia -=3;
-        System.out.println(nome + " faz o ataque Lingua chicote ");
-        if (energia <0){
-            energia=0;
-            System.out.println(nome +" Sem energia ação não executada");
-          }
-          energiaAtual();
-    }
-
-    @Override
     public void comer(){
         energia+=4;
         System.out.println("Nham Nham ");
         energiaAtual();
+    }
+    @Override
+    public void atacar() {
+        System.err.println(nome + " ataca de 3 formas");
     }
     
 }
