@@ -1,6 +1,13 @@
+import br.com.Jkalango.view.JIntro;
+import br.com.Jkalango.view.JSplash;
+
+
 public class App {
     public static void main(String[] args) throws Exception {
-
+        new JIntro();
+        new JSplash();
+     
+        
         Formiga f = new Formiga ("Açucarado");
         f.mover();
         f.mover();
