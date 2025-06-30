@@ -1,4 +1,6 @@
+import br.com.Jkalango.view.JCadastroJogador;
 import br.com.Jkalango.view.JIntro;
+import br.com.Jkalango.view.JMissaoobjeto;
 import br.com.Jkalango.view.JSplash;
 
 
@@ -6,7 +8,8 @@ public class App {
     public static void main(String[] args) throws Exception {
         new JIntro();
         new JSplash();
-     
+        new JMissaoobjeto();
+        new JCadastroJogador();
         
         Formiga f = new Formiga ("Açucarado");
         f.mover();

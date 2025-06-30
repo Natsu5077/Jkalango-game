@@ -38,7 +38,7 @@ public class JIntro extends JFrame implements ActionListener {
         JPanel buttonPanel = new JPanel(new FlowLayout());
         buttonPanel.setBackground(Color.BLACK);
         startButton = new JButton("MISSÃO 01!");
-        startButton.addActionListener(this);
+        startButton.addActionListener(this); // Adiciona listener à própria classe
         buttonPanel.add(startButton);
 
         // Adiciona o painel do botão ao centro do mainPanel inicialmente
@@ -63,20 +63,21 @@ public class JIntro extends JFrame implements ActionListener {
         JTextPane textPane = new JTextPane();
         textPane.setContentType("text/html");
         textPane.setBackground(Color.BLACK);
-        textPane.setForeground(Color.BLACK);
+        // A cor do texto precisa ser algo visível no fundo preto, como branco ou cinza claro
+        textPane.setForeground(Color.RED); // Mantendo o vermelho como você usou no HTML
         textPane.setFont(new Font("Monospaced", Font.PLAIN, 24));
         textPane.setEditable(false);
 
         String htmlContent = "<html><body style='text-align: justify; color: red; font-family: Monospaced;'>"
-                           + "<p>Em um mundo distante, onde o cerrado pulsa com uma energia sobrenatural, "
-                           + "<b>Jkalango</b>, um calango de escamas brilhantes e olhos que refletem o luar, "
-                           + "carrega o peso de salvar sua espécie da extinção. O outrora vibrante cerrado mágico agora é um lugar de sombras retorcidas, "
-                           + "onde o vento sussurra lamentos antigos e o solo parece sangrar sob a luz da lua cheia.</p>"
-                           + "<p>Jkalango, ao lado de seus aliados leais, <b>Jformiga</b>, "
-                           + "uma formiga com força descomunal e um passado envolto em mistério, e <b>Jabelha</b>, uma abelha cuja picada carrega veneno místico, "
-                           + "enfrentará missões aterrorizantes para proteger seu lar. Mas algo maligno despertou nas profundezas do cerrado, e seus inimigos não são apenas obstáculos "
-                           + "— são pesadelos vivos que caçam suas almas.</p>"
-                           + "</body></html>";
+                               + "<p>Em um mundo distante, onde o cerrado pulsa com uma energia sobrenatural, "
+                               + "<b>Jkalango</b>, um calango de escamas brilhantes e olhos que refletem o luar, "
+                               + "carrega o peso de salvar sua espécie da extinção. O outrora vibrante cerrado mágico agora é um lugar de sombras retorcidas, "
+                               + "onde o vento sussurra lamentos antigos e o solo parece sangrar sob a luz da lua cheia.</p>"
+                               + "<p>Jkalango, ao lado de seus aliados leais, <b>Jformiga</b>, "
+                               + "uma formiga com força descomunal e um passado envolto em mistério, e <b>Jabelha</b>, uma abelha cuja picada carrega veneno místico, "
+                               + "enfrentará missões aterrorizantes para proteger seu lar. Mas algo maligno despertou nas profundezas do cerrado, e seus inimigos não são apenas obstáculos "
+                               + "— são pesadelos vivos que caçam suas almas.</p>"
+                               + "</body></html>";
 
         textPane.setText(htmlContent);
 
@@ -86,18 +87,18 @@ public class JIntro extends JFrame implements ActionListener {
 
         introPanel.add(scrollPane, BorderLayout.CENTER); // Texto no centro do introPanel
 
-        // Adicionando o botão inicisar missão 
+        // Adicionando o botão iniciar missão
         startMissionButton = new JButton("Iniciar Missão");
         startMissionButton.addActionListener(this); // A própria JIntro também ouve o clique deste botão
 
-        // Criar um painel para o botão 
+        // Criar um painel para o botão
         JPanel missionButtonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         missionButtonPanel.setBackground(Color.BLACK);
         missionButtonPanel.add(startMissionButton);
-        
-        introPanel.add(missionButtonPanel, BorderLayout.SOUTH); 
-        
-        
+
+        introPanel.add(missionButtonPanel, BorderLayout.SOUTH);
+
+       
     }
 
     @Override
@@ -105,18 +106,21 @@ public class JIntro extends JFrame implements ActionListener {
         if (e.getSource() == startButton) {
             // Remove o painel atual com o botão MISSÃO 01!
             mainPanel.removeAll();
-            // Adiciona o painel de introdução com o botãso iniciar 
+            // Adiciona o painel de introdução com o botão iniciar
             mainPanel.add(introPanel, BorderLayout.CENTER);
-            // Atualiza o layout 
+            // Atualiza o layout
             mainPanel.revalidate();
             mainPanel.repaint();
         } else if (e.getSource() == startMissionButton) {
-            JOptionPane.showMessageDialog(null, "Missão iniciada");
+            // Quando o botão "Iniciar Missão" é clicado:
+            // 1. Abre a janela de cadastro de jogador
+            new JCadastroJogador().setVisible(true); // Garante que a nova janela seja visível
+            // 2. Fecha a janela de introdução (JIntro)
+            dispose();
+       
         }
     }
     
+   
+
         }
-
-
-
-    
