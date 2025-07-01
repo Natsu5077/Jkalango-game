@@ -56,15 +56,13 @@ public class JIntro extends JFrame implements ActionListener {
     private void setupIntroPanel() {
         introPanel = new JPanel();
         introPanel.setBackground(Color.BLACK);
-        // Usaremos BorderLayout para o introPanel para colocar o texto no centro e o botão no sul
         introPanel.setLayout(new BorderLayout());
         introPanel.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 3));
 
         JTextPane textPane = new JTextPane();
         textPane.setContentType("text/html");
         textPane.setBackground(Color.BLACK);
-        // A cor do texto precisa ser algo visível no fundo preto, como branco ou cinza claro
-        textPane.setForeground(Color.RED); // Mantendo o vermelho como você usou no HTML
+        textPane.setForeground(Color.RED); 
         textPane.setFont(new Font("Monospaced", Font.PLAIN, 24));
         textPane.setEditable(false);
 

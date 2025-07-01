@@ -1,11 +1,11 @@
 package br.com.Jkalango.view;
 
-import java.awt.FlowLayout; // Import adicionado
-import java.awt.LayoutManager; // Embora importado, não é estritamente necessário se você usar a subclasse FlowLayout diretamente
+import java.awt.FlowLayout;
+import java.awt.LayoutManager; 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.Action; // Este import pode ser removido se não for usado
+import javax.swing.Action; 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -31,7 +31,7 @@ public class JCadastroJogador extends JFrame {
 
         // Cria e adiciona o label e o campo de texto para o nome
         JLabel lblNome = new JLabel("nome");
-        JTextField txtNome = new JTextField(30); // Ajustei o tamanho para um valor mais comum para campos de texto
+        JTextField txtNome = new JTextField(30); 
         add(lblNome);
         add(txtNome);
 
@@ -60,7 +60,7 @@ public class JCadastroJogador extends JFrame {
 
         // Cria e adiciona o botão de cadastro
         JButton btnCadastrar = new JButton("Cadastrar");
-        add(btnCadastrar); // Certifique-se de adicionar o botão ao frame
+        add(btnCadastrar);
 
         // Adiciona um ActionListener ao botão
         btnCadastrar.addActionListener(new ActionListener() {

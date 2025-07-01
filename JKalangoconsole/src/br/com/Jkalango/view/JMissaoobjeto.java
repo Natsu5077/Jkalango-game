@@ -1,6 +1,6 @@
 package br.com.Jkalango.view;
 
-import br.com.Jkalango.bo.IColor; // Certifique-se de que esta interface existe
+import br.com.Jkalango.bo.IColor; 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
@@ -18,17 +18,15 @@ import java.awt.event.ActionListener;
 
 public class JMissaoobjeto extends JFrame implements IColor, ActionListener {
 
-    private JButton startButton; // O botão inicial para "A maldição..."
-    private JButton startMissionButton; // Botão para iniciar a missão real (dentro do introPanel)
+    private JButton startButton; 
+    private JButton startMissionButton; 
     private JPanel mainPanel;
     private JPanel introPanel;
 
     public JMissaoobjeto() {
         setTitle("A maldição do cerrado codificado");
         setSize(600, 500);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Mudei para DISPOSE_ON_CLOSE
-                                                          // Se esta for uma tela intermediária e não a principal.
-                                                          // Se for a última tela, EXIT_ON_CLOSE pode ser ok.
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); 
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
 
@@ -39,7 +37,7 @@ public class JMissaoobjeto extends JFrame implements IColor, ActionListener {
         JPanel buttonPanel = new JPanel(new FlowLayout());
         buttonPanel.setBackground(Color.BLACK);
         startButton = new JButton("A maldição do cerrado codificado");
-        startButton.addActionListener(this); // O 'this' aponta para o actionPerformed desta classe
+        startButton.addActionListener(this); 
         buttonPanel.add(startButton);
 
         // Adiciona o painel do botão ao centro do mainPanel inicialmente
@@ -62,7 +60,6 @@ public class JMissaoobjeto extends JFrame implements IColor, ActionListener {
         JTextPane textPane = new JTextPane();
         textPane.setContentType("text/html");
         textPane.setBackground(Color.BLACK);
-        // Corrigido para uma cor visível no fundo preto. Usei RED como no seu HTML.
         textPane.setForeground(Color.RED); 
         textPane.setFont(new Font("Monospaced", Font.PLAIN, 24));
         textPane.setEditable(false);
@@ -79,8 +76,8 @@ public class JMissaoobjeto extends JFrame implements IColor, ActionListener {
         introPanel.add(scrollPane, BorderLayout.CENTER); // Texto no centro do introPanel
 
         // Adicionando o botão 'Iniciar Missão' dentro do introPanel
-        startMissionButton = new JButton("Iniciar Missão"); // Mudei o nome da variável para não confundir com o startButton principal
-        startMissionButton.addActionListener(this); // 'this' para o actionPerformed desta classe
+        startMissionButton = new JButton("Iniciar Missão"); 
+        startMissionButton.addActionListener(this); 
         
         JPanel missionButtonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         missionButtonPanel.setBackground(Color.BLACK);
@@ -102,18 +99,16 @@ public class JMissaoobjeto extends JFrame implements IColor, ActionListener {
         } else if (e.getSource() == startMissionButton) {
             // Ação quando o botão "Iniciar Missão" dentro do introPanel é clicado
             JOptionPane.showMessageDialog(this, "Missão iniciada!");
-            // Aqui você pode adicionar a lógica para avançar para a próxima etapa do jogo
-            // Por exemplo: new ProximaTelaDoJogo().setVisible(true); dispose();
+ 
         }
     }
 
     @Override
     public void mudarfundo(Color newColor) {
         // Implementação da interface IColor.
-        // Você pode aplicar a nova cor ao fundo do mainPanel ou de outros componentes.
+   
         mainPanel.setBackground(newColor);
-        mainPanel.repaint(); // Garante que a mudança seja desenhada
-    }
+        mainPanel.repaint(); 
    
         }
-    
+}
