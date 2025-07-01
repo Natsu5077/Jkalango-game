@@ -1,90 +1,72 @@
 package br.com.jkalango.view;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import javax.swing.JPasswordField; // Para o campo de senha
 import javax.swing.JButton;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JOptionPane; // Para exibir mensagens ao usuário
+import javax.swing.JOptionPane;
+import br.com.jkalango.dto.NovoJogador; 
 
 public class JCadastroJogadorGabarito extends JFrame {
 
     public JCadastroJogadorGabarito() {
-        // 1º) Configuração do formulário (JFrame)
+  
         setTitle("Cadastro de Jogador - JKalango");
-        setSize(400, 450); // Tamanho ajustado para acomodar mais campos
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Apenas fecha esta janela, não encerra o programa
-        setLocationRelativeTo(null); // Centraliza na tela
-        setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10)); // Layout mais organizado com espaçamento
+        setSize(300, 150); 
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setLocationRelativeTo(null);
+        setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
 
-        // 2º) Adicionar os campos de texto (JTextField) para os dados do jogador
-        // Nome
+   
         JLabel lblNome = new JLabel("Nome:");
-        JTextField txtNome = new JTextField(30); // 30 colunas de largura
+        JTextField txtNome = new JTextField(20); 
         add(lblNome);
         add(txtNome);
-
-        // Nick Name
-        JLabel lblNickName = new JLabel("Nick Name:");
-        JTextField txtNickName = new JTextField(30);
-        add(lblNickName);
-        add(txtNickName);
-
-        // Email
-        JLabel lblEmail = new JLabel("Email:");
-        JTextField txtEmail = new JTextField(30);
-        add(lblEmail);
-        add(txtEmail);
-
-        // Telefone
-        JLabel lblTelefone = new JLabel("Telefone:");
-        JTextField txtTelefone = new JTextField(30);
-        add(lblTelefone);
-        add(txtTelefone);
-
-        // Senha (usando JPasswordField para esconder a entrada)
-        JLabel lblSenha = new JLabel("Senha:");
-        JPasswordField txtSenha = new JPasswordField(30);
-        add(lblSenha);
-        add(txtSenha);
-
-        // 3º) Adicionar o botão "Cadastrar"
+ 
         JButton btnCadastrar = new JButton("Cadastrar");
         add(btnCadastrar);
 
-        // 4º) Adicionar um evento ao botão de cadastrar
+
         btnCadastrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Aqui você pegaria os dados dos campos
-                String nome = txtNome.getText();
-                String nickName = txtNickName.getText();
-                String email = txtEmail.getText();
-                String telefone = txtTelefone.getText();
-                // A senha precisa ser obtida como char[] e convertida para String para uso
-                String senha = new String(txtSenha.getPassword());
+           
+                String nome = txtNome.getText().trim();
 
-                // Exemplo simples: exibir os dados em uma caixa de diálogo
-                String mensagem = "Dados do Jogador:\n" +
-                                  "Nome: " + nome + "\n" +
-                                  "Nick Name: " + nickName + "\n" +
-                                  "Email: " + email + "\n" +
-                                  "Telefone: " + telefone + "\n" +
-                                  "Senha: " + senha;
-                JOptionPane.showMessageDialog(JCadastroJogadorGabarito.this, mensagem, "Dados do Cadastro", JOptionPane.INFORMATION_MESSAGE);
+             
+                if (nome.isEmpty()) {
+                    JOptionPane.showMessageDialog(JCadastroJogadorGabarito.this, "Por favor, preencha o nome.", "Campo Vazio", JOptionPane.WARNING_MESSAGE);
+                    return; 
+                }
 
-                // *** Próximos passos (integração com banco de dados): ***
-                // 1. Validar os dados (ex: campos não vazios, formato de email, etc.)
-                // 2. Chamar um método em uma classe de serviço/DAO para salvar esses dados no banco de dados.
-                //    Por exemplo: JogadorDAO.salvar(new Jogador(nome, nickName, email, telefone, senha));
-                // 3. Lidar com o resultado do salvamento (sucesso/falha).
-                // 4. Fechar esta janela após o cadastro bem-sucedido: dispose();
+                try {
+            
+                    NovoJogador novoJogador = new NovoJogador(nome);
+
+             
+                    String mensagem = "Jogador Cadastrado com Sucesso!\n" +
+                                      "Nome: " + novoJogador.getNome();
+
+                    JOptionPane.showMessageDialog(JCadastroJogadorGabarito.this, mensagem, "Cadastro Realizado", JOptionPane.INFORMATION_MESSAGE);
+
+             
+                    dispose();
+
+                } catch (IllegalArgumentException ex) {
+                   
+                    System.err.println("Erro de validação ao cadastrar jogador: " + ex.getMessage());
+                } catch (Exception ex) {
+                
+                    JOptionPane.showMessageDialog(JCadastroJogadorGabarito.this, "Ocorreu um erro ao cadastrar o jogador: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+                    ex.printStackTrace(); 
+                }
             }
         });
 
-        // 5º) Mostrar o formulário - Deve ser o último passo no construtor
+      
         setVisible(true);
     }
 }
